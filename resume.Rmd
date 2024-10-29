@@ -1,0 +1,25 @@
+---
+title: "My resume"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+# Academic and Professional Experience
+
+## Education
+- **Columbia University**: MPH in epidemiology with a Certificate in Biostatistics 
+- Courses: Applied Regression, Research Methods & Application, Analysis of Categorical Data, Applied of Epi methods(SAS)
+
+- **New York University**: MS in Information Technology Project Management GPA:3.9 
+- Courses: Management of Information Systems, Applying PM in IT, Agile PM, Enterprise Project Management
+
+- **Sichuan University**: Bachelor of Engineering in Electrical Engineering, Minor in public health and finance June,2021, CN
+- Courses: Calculus, Statistics, Numerical Computation Methods, Electromagnetic Fields, Introduction to Pharmaceutical Engineering, Introduction to Public Health and Medicine, Accounting, Economics, Banking and Financial Market
+
+## Professional Experience
+
+
+## Leadership experience
+
