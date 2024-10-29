@@ -1,0 +1,21 @@
+---
+title: "Welcome to Timothy's Website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+# Hello, and Welcome!
+Welcome to my personal website. My name is Timothy DU, a second year MPH in Epi student with a certificate in Biostatistics.
+
+- This website includes:
+  - A brief introduction to who I am and what I do
+  - My academic and professional experience in the form of a resume
+
+## Contanct information
+Feel free to connect with me on [GitHub](https://github.com/TimothyDu/timothydu.github.io)
+
+or [email me](mailto:rd3096@cumc.columbia.edu).
+
