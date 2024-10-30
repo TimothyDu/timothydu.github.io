@@ -6,7 +6,8 @@ output:
     toc_float: true
     theme: cerulean
 ---
-# Academic and Professional Experience
+
+# Acadamic and professional experience
 
 ## Education
 **Columbia University**: MPH in epidemiology with a Certificate in Biostatistics 

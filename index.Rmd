@@ -17,5 +17,7 @@ Welcome to my personal website. My name is Timothy DU, a second year MPH in Epi 
 ## Contanct information
 Feel free to connect with me on [GitHub](https://github.com/TimothyDu/timothydu.github.io)
 
-or [email me](mailto:rd3096@cumc.columbia.edu).
+If you want to collaborate please [email me](mailto:rd3096@cumc.columbia.edu).
 
+Here is my resume if you are interested
+[resume](resume.html)
