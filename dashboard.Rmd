@@ -1,0 +1,111 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+
+library(p8105.datasets)
+data("instacart")
+```
+
+```{r}
+instacart_clean=
+  instacart %>% 
+  select(product_id, add_to_cart_order, reordered, order_dow, product_name) %>% 
+  mutate(
+    order_dow=factor(order_dow,level = 0:6,labels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"))
+  )
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Plot 1: Bar Plot of Top 10 Most Ordered Products
+
+```{r}
+top_products =
+  instacart_clean %>%
+  count(product_name, sort = TRUE) %>%
+  slice_max(n, n = 10) %>% 
+  mutate(product_name = fct_reorder(product_name, n))
+
+bar_plot =
+  plot_ly(
+    data = top_products,
+    x = ~ product_name,
+    y = ~ n,
+    type ="bar",
+    color = ~ product_name,
+   colors = "viridis"
+  ) %>% 
+layout(
+    xaxis = list(title = "product_name"),
+    yaxis = list(title = "Number of Orders")
+  )
+
+bar_plot
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Plot 2: Scatterplot of Reorder Rate by Add-to-Cart Position
+
+```{r}
+scatter_data =
+  instacart_clean %>%
+  filter(add_to_cart_order <= 100) %>% 
+  group_by(add_to_cart_order) %>%
+  summarize(reorder_rate = mean(reordered, na.rm = TRUE)) %>% 
+  mutate(text_label = str_c("Add-to-Cart Order: ", add_to_cart_order, "\nReorder Rate: ", round(reorder_rate, 2)))
+
+scatter_plot=
+  scatter_data %>%
+  plot_ly(
+    x = ~ add_to_cart_order, 
+    y = ~ reorder_rate, 
+    type = "scatter", 
+    mode = "markers",
+    color = ~reorder_rate,  # Color by reorder rate for a gradient effect
+    text = ~text_label,  # Hover text
+    alpha = 0.6  # Transparency for markers
+  ) %>%
+  layout(
+    xaxis = list(title = "Add-to-Cart Order"),
+    yaxis = list(title = "Reorder Rate")
+  )
+
+scatter_plot
+
+```
+
+### Plot 3: Boxplot of Add-to-Cart Order Positions (Under 30) by Day of the Week
+
+```{r}
+# Create box plot with plot_ly
+box_plot =
+  instacart_clean %>%
+  filter(add_to_cart_order < 30) %>% 
+  plot_ly(
+    x = ~ order_dow,
+    y = ~add_to_cart_order,
+    color = ~ order_dow,
+    type = "box",
+    colors = "viridis" 
+  ) %>%
+  layout(
+    yaxis = list(title = "Add-to-Cart Order Position"),
+    xaxis = list(title = "Day of the Week")
+  )
+
+box_plot
+```
+
