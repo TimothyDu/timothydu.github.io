@@ -13,6 +13,8 @@ navbar:
       href: https://github.com/TimothyDu/timothydu.github.io
     - icon: fa-instagram fa-lg
       href: https://www.instagram.com/
+    - icon: fa-linkedn fa-lg
+      href: https://www.linkedin.com/
 
 output:
   html_document:
