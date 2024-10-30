@@ -57,7 +57,7 @@ bar_plot
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Plot 2: Relationship Between Reorder Rate and Add-to-Cart Position
+### Plot 2: Scatterplot of Reorder Rate by Add-to-Cart Position
 
 ```{r}
 scatter_data =
@@ -87,9 +87,26 @@ scatter_plot
 
 ```
 
-### Chart C
+### Plot 3: Boxplot of Add-to-Cart Order Positions (Under 30) by Day of the Week
 
 ```{r}
+# Create box plot with plot_ly
+box_plot =
+  instacart_clean %>%
+  filter(add_to_cart_order < 30) %>% 
+  plot_ly(
+    x = ~ order_dow,
+    y = ~add_to_cart_order,
+    color = ~ order_dow,
+    type = "box",
+    colors = "viridis" 
+  ) %>%
+  layout(
+    yaxis = list(title = "Add-to-Cart Order Position"),
+    xaxis = list(title = "Day of the Week")
+  )
+
+box_plot
 
 ```
 
